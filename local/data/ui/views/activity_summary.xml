@@ -1,0 +1,12 @@
+<dashboard>
+  <label>Activity Summary</label>
+  <row>
+    <panel>
+      <title>Recently Installed Packages</title>
+      <event>
+        <title>Installed Packages</title>
+        <search ref="Installed Packages"></search>
+      </event>
+    </panel>
+  </row>
+</dashboard>

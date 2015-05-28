@@ -1,0 +1,107 @@
+[app/ui]
+version = 6.2.3
+modtime = 1432770010.138532000
+
+[app/launcher]
+version = 6.2.3
+modtime = 1432770010.141485000
+
+[savedsearches/Installed%20Packages]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1432832608.899986000
+
+[props/honeynet_5/EXTRACT-message]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1432830645.432824000
+
+[props/honeynet_5_auth]
+owner = admin
+version = 6.2.3
+modtime = 1432831433.883506000
+
+[props/honeynet_5_daemon]
+owner = admin
+version = 6.2.3
+modtime = 1432831516.135000000
+
+[props/honeynet_5_debug]
+owner = admin
+version = 6.2.3
+modtime = 1432831744.115723000
+
+[props/honeynet_5_dpkg]
+owner = admin
+version = 6.2.3
+modtime = 1432831826.031720000
+
+[props/honeynet_5_kern]
+owner = admin
+version = 6.2.3
+modtime = 1432831876.781042000
+
+[props/honeynet_5_messages]
+owner = admin
+version = 6.2.3
+modtime = 1432832156.363684000
+
+[props/honeynet_5_udev]
+owner = admin
+version = 6.2.3
+modtime = 1432832265.562253000
+
+[props/honeynet_5_apache]
+owner = admin
+version = 6.2.3
+modtime = 1432832414.065813000
+
+[props/honeynet_5_auth/EXTRACT-src_ip]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1432833462.571209000
+
+[props/honeynet_5_auth/EXTRACT-rhost]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1432833695.735805000
+
+[props/honeynet_5_auth/EXTRACT-command]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1432835623.683502000
+
+[props/honeynet_5_apache/REPORT-access]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1432835636.947558000
+
+[props/honeynet_5_messages/REPORT-syslog]
+access = read : [ * ], write : [ admin, power ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1432835656.702166000
+
+[props/honeynet_5_auth/EXTRACT-sudo_user]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1432837671.758849000
+
+[views/activity_summary]
+owner = admin
+version = 6.2.3
+modtime = 1432837733.167335000
