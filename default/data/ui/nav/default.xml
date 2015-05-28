@@ -1,7 +1,7 @@
-<nav search_view="search" color="#65A637">
-  <view name="search" default='true' />
-  <view name="data_models" />
-  <view name="reports" />
-  <view name="alerts" />
-  <view name="dashboards" />
+<nav search_view="search" color="#E6A743">
+  <collection label="Honeynet Log Challenge">
+    <view name="activity_summary" default="true" />
+    <divider />
+  </collection>
+  <view name="search" />
 </nav>
