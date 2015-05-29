@@ -102,6 +102,15 @@ version = 6.2.3
 modtime = 1432837671.758849000
 
 [views/activity_summary]
+access = read : [ * ], write : [ admin, power ]
+export = none
 owner = admin
 version = 6.2.3
-modtime = 1432840234.325523000
+modtime = 1432923933.734269000
+
+[views/ssh_clients_with_successful_attempts]
+access = read : [ * ], write : [ admin ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1432926551.258465000
