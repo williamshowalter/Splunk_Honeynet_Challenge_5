@@ -3,18 +3,34 @@
   <row>
     <panel>
       <title>Recently Installed Packages</title>
-      <event>
+      <table>
         <title>Installed Packages</title>
-        <search ref="Installed Packages"></search>
-      </event>
+        <search>
+          <query>sourcetype="honeynet_5_dpkg*" NOT lib* | rex "status installed (?&lt;application&gt;(\S|\s)+)" | search application=* | eval Time=strftime(_time,"%Y/%m/%d %H:%M:%S") | rename application as "Newly Installed Application" | table Time, "Newly Installed Application"</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="list.drilldown">full</option>
+        <option name="list.wrap">1</option>
+        <option name="maxLines">5</option>
+        <option name="raw.drilldown">full</option>
+        <option name="rowNumbers">false</option>
+        <option name="table.drilldown">all</option>
+        <option name="table.wrap">1</option>
+        <option name="type">list</option>
+        <option name="wrap">true</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+      </table>
     </panel>
     <panel>
       <title>Privileged Commands</title>
       <table>
         <title>Commands issued through sudo</title>
         <search>
-          <query>index=* sourcetype=honeynet_5_auth sudo_user=* NOT sudo_user="pam*" | rename sudo_user AS "Sudo User" | rename command AS "Command Issued"| rename _time AS Time | convert ctime(Time) | table "Sudo User",Time,"Command Issued"</query>
+          <query>index=* sourcetype=honeynet_5_auth* sudo_user=* NOT sudo_user="pam*" | rename sudo_user AS "Sudo User" | rename command AS "Command Issued"| rename _time AS Time | convert ctime(Time) | table "Sudo User",Time,"Command Issued"</query>
           <earliest>0</earliest>
+          <latest></latest>
         </search>
         <option name="wrap">true</option>
         <option name="rowNumbers">false</option>

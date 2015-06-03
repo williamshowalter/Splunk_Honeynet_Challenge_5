@@ -1,0 +1,39 @@
+<form>
+  <label>Sudo Commands issued by User</label>
+  <description>Commands filtered by username</description>
+
+  <fieldset autoRun="true" submitButton="false">
+    <input type="dropdown" token="username_token" searchWhenChanged="true">
+      <label>Select a Username:</label>
+
+      <default>*</default>
+      <choice value="*">All</choice>
+
+      <!-- Define the other choices with a populating search -->
+      <search>
+        <query>
+          sourcetype=honeynet_5_auth* sudo_user=* NOT sudo_user="pam*" | stats count by sudo_user
+        </query>
+      </search>
+      <fieldForLabel>sudo_user</fieldForLabel>
+      <fieldForValue>sudo_user</fieldForValue>
+    </input>
+
+  </fieldset>
+  <row>
+    <panel>
+      <!-- Use tokens from the <input> elements in the panel title -->
+      <title>
+        Commands issued by $username_token$ with sudo:
+      </title>
+	  <table>
+        <!-- search for the visualization, references the input tokens-->
+		<search>
+          <query>index=* sourcetype=honeynet_5_auth* `sudo_commands_per_user($username_token$)`</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+	  </table>
+    </panel>
+  </row>
+</form>

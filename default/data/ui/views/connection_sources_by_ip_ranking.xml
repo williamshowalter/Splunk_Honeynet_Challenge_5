@@ -1,0 +1,22 @@
+<dashboard>
+  <label>Connection Sources by IP Ranking</label>
+  <description>Observed IPs by associated malicious ranking</description>
+  <row>
+    <panel>
+      <title>Observed IPs by associated malicious ranking</title>
+      <table>
+        <title>BGP Ranks for observed timeframe from http://bgpranking.circl.lu/</title>
+        <search>
+          <query>index=* sourcetype=honeynet_5* sourcetype!=honeynet_5_dpkg* | rex "(?&lt;IP_add&gt;\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})" | search IP_add=* | rex "MAC (?&lt;MAC&gt;)" | search (MAC!="*ff:ff:ff:ff:ff*" OR NOT MAC=*) (IP_add!="0.0.0.0") (IP_add!="10.*") (IP_add!="127.0.0.1") NOT Failed NOT failure NOT Invalid NOT "Address * maps to *, but this does not" NOT DHCPDISCOVER NOT dhclient | lookup bgprank_time ip AS IP_add time AS _time | search ip_AS_rank=* | sort ip_AS_rank | stats dc(IP_add) by IP_add, ip_ASN, ip_block, ip_AS_description, ip_AS_rank, ip_rank_date | fields IP_add, ip_ASN, ip_block, ip_AS_description, ip_AS_rank, ip_rank_date | sort -ip_AS_rank</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>

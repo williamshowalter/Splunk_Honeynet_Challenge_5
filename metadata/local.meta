@@ -106,7 +106,7 @@ access = read : [ * ], write : [ admin, power ]
 export = none
 owner = admin
 version = 6.2.3
-modtime = 1432923933.734269000
+modtime = 1433352814.711475000
 
 [views/ssh_clients_with_successful_attempts]
 access = read : [ * ], write : [ admin ]
@@ -114,3 +114,8 @@ export = none
 owner = admin
 version = 6.2.3
 modtime = 1432926551.258465000
+
+[views/connection_sources_by_ip_ranking]
+owner = admin
+version = 6.2.3
+modtime = 1433288735.734004000
