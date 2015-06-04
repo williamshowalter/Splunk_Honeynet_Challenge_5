@@ -38,7 +38,7 @@
       <table>
         <title>Status code is not success (200). HTTP status codes - 3XX: Redirect, 4XX: Client Error, 5XX: Server Error</title>
         <search>
-          <query>sourcetype=honeynet_5_apache* NOT status=200 | rename uri as URI, status as Status, method as Method, clientip as Client, useragent as "User Agent" | table URI, Status, Method, Client, "User Agent"</query>
+          <query>sourcetype=honeynet_5_apache* NOT status=200 status=* | rename uri as URI, status as Status, method as Method, clientip as Client, useragent as "User Agent" | table URI, Status, Method, Client, "User Agent"</query>
         </search>
         <option name="wrap">true</option>
         <option name="rowNumbers">false</option>
