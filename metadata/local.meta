@@ -106,7 +106,7 @@ access = read : [ * ], write : [ admin, power ]
 export = none
 owner = admin
 version = 6.2.3
-modtime = 1433352814.711475000
+modtime = 1433439255.843465000
 
 [views/ssh_clients_with_successful_attempts]
 access = read : [ * ], write : [ admin ]
@@ -119,3 +119,10 @@ modtime = 1433378881.210726000
 owner = admin
 version = 6.2.3
 modtime = 1433379319.698170000
+
+[views/apache_logs]
+access = read : [ * ], write : [ admin, splunk-system-role ]
+export = none
+owner = admin
+version = 6.2.3
+modtime = 1433439988.090662000

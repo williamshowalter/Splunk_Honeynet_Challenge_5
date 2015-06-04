@@ -40,4 +40,21 @@
       </table>
     </panel>
   </row>
+  <row>
+    <panel>
+      <title>Top Requests</title>
+      <table>
+        <search>
+          <query>sourcetype=honeynet_5_apache* | join uri [search sourcetype=honeynet_5_apache uri=* | stats count(uri) by uri] | stats dc(uri) by uri, count(uri) | rename uri as URI | rename count(uri) as "Number of Requests" | table URI, "Number of Requests" | sort -"Number of Requests"</query>
+          <earliest></earliest>
+          <latest></latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">true</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
 </dashboard>
