@@ -24,11 +24,11 @@
       </table>
     </panel>
     <panel>
-      <title>Privileged Commands</title>
+      <title>Commands issued by any user with sudo:</title>
       <table>
-        <title>Commands issued through sudo</title>
+        <title>Users and Commands</title>
         <search>
-          <query>index=* sourcetype=honeynet_5_auth* sudo_user=* NOT sudo_user="pam*" | rename sudo_user AS "Sudo User" | rename command AS "Command Issued"| rename _time AS Time | convert ctime(Time) | table "Sudo User",Time,"Command Issued"</query>
+          <query>index=* sourcetype=honeynet_5_auth* `sudo_commands_per_user(*)`</query>
           <earliest>0</earliest>
           <latest></latest>
         </search>
@@ -36,7 +36,7 @@
         <option name="rowNumbers">false</option>
         <option name="dataOverlayMode">none</option>
         <option name="drilldown">cell</option>
-        <option name="count">15</option>
+        <option name="count">10</option>
       </table>
     </panel>
   </row>

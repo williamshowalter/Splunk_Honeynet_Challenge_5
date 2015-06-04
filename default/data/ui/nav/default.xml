@@ -1,6 +1,6 @@
 <nav search_view="search" color="#E6A743">
   <view name="activity_summary" default="true" />
-  <collection label="Advanced Views">
+  <collection label="Detailed Views">
     <view name="ssh_clients_with_successful_attempts" />
     <view name="connection_sources_by_ip_ranking" />
     <view name="sudo_commands" />
