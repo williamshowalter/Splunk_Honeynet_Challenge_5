@@ -4,6 +4,7 @@
     <view name="ssh_clients_with_successful_attempts" />
     <view name="sudo_commands" />
     <view name="apache_logs" />
+    <view name="wordpress_logs" />
     <view name="connection_sources_by_ip_ranking" />
 
   </collection>
