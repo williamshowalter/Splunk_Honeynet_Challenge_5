@@ -1,77 +1,76 @@
 <form>
-    <description>Clients filtered by IP Address</description>
-
-    <fieldset autoRun="false" submitButton="true">
-      <input type="text" token="client_token" searchWhenChanged="true">
-        <label>Enter an IP Address</label>
-        <default>*</default>
-      </input>
-    </fieldset>
-
-    <label>Wordpress Logs</label>
-    <row>
-      <panel>
-        <title>Wordpress Clients by Connections Made</title>
-        <chart>
-          <search>
-            <query>sourcetype=honeynet_5_apache* | transaction clientip | where field_match_sum&gt;1 | search wp- | search clientip=$client_token$ | table clientip,field_match_sum | sort -field_match_sum | rename field_match_sum as Connections clientip as "IP Address"</query>
-            <earliest>0</earliest>
-            <latest></latest>
-          </search>
-          <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
-          <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
-          <option name="charting.axisTitleX.visibility">visible</option>
-          <option name="charting.axisTitleY.visibility">visible</option>
-          <option name="charting.axisTitleY2.visibility">visible</option>
-          <option name="charting.axisX.scale">linear</option>
-          <option name="charting.axisY.scale">linear</option>
-          <option name="charting.axisY2.enabled">false</option>
-          <option name="charting.axisY2.scale">inherit</option>
-          <option name="charting.chart">bar</option>
-          <option name="charting.chart.bubbleMaximumSize">50</option>
-          <option name="charting.chart.bubbleMinimumSize">10</option>
-          <option name="charting.chart.bubbleSizeBy">area</option>
-          <option name="charting.chart.nullValueMode">gaps</option>
-          <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
-          <option name="charting.chart.stackMode">default</option>
-          <option name="charting.chart.style">shiny</option>
-          <option name="charting.drilldown">all</option>
-          <option name="charting.layout.splitSeries">0</option>
-          <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
-          <option name="charting.legend.placement">right</option>
-        </chart>
-      </panel>
-    </row>
-    <row>
-      <panel>
-        <title>Requests that did not return success</title>
-        <table>
-          <title>Status code is not success (200). HTTP status codes - 3XX: Redirect, 4XX: Client Error, 5XX: Server Error</title>
-          <search>
-            <query>sourcetype=honeynet_5_apache* NOT status=200 status=* clientip=$client_token$ /wp- | rename uri as URI, status as Status, method as Method, clientip as Client, useragent as "User Agent" | table URI, Status, Method, Client, "User Agent"</query>
-          </search>
-          <option name="wrap">true</option>
-          <option name="rowNumbers">false</option>
-          <option name="dataOverlayMode">none</option>
-          <option name="drilldown">cell</option>
-          <option name="count">10</option>
-        </table>
-      </panel>
-    </row>
-    <row>
-      <panel>
-        <table>
-          <title>Wordpress Connection details by $client_token$</title>
-          <search>
-            <query>sourcetype=honeynet_5_apache* | transaction clientip | where field_match_sum&gt;1 | search wp- | search clientip=$client_token$ | table clientip,uri,uri_query,field_match_sum | sort -field_match_sum | rename field_match_sum as Connections, uri as "Requests Made", clientip as "IP Address", uri_query as Query</query>
-            <earliest>0</earliest>
-            <latest></latest>
-          </search>
-          <option name="wrap">undefined</option>
-          <option name="rowNumbers">undefined</option>
-          <option name="drilldown">row</option>
-        </table>
-      </panel>
-    </row>
-
+  <description>Clients filtered by IP Address</description>
+  <fieldset autoRun="false" submitButton="true">
+    <input type="text" token="client_token" searchWhenChanged="true">
+      <label>Enter an IP Address</label>
+      <default>*</default>
+    </input>
+  </fieldset>
+  <label>Wordpress Logs</label>
+  <row>
+    <panel>
+      <title>Wordpress Clients by Connections Made</title>
+      <chart>
+        <search>
+          <query>sourcetype=honeynet_5_apache* | transaction clientip | where field_match_sum&gt;1 | search wp- | search clientip=$client_token$ | table clientip,field_match_sum | sort -field_match_sum | rename field_match_sum as Connections clientip as "IP Address"</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">visible</option>
+        <option name="charting.axisTitleY.visibility">visible</option>
+        <option name="charting.axisTitleY2.visibility">visible</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.enabled">false</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">bar</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">all</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.placement">right</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Requests that did not return success</title>
+      <table>
+        <title>Status code is not success (200). HTTP status codes - 3XX: Redirect, 4XX: Client Error, 5XX: Server Error</title>
+        <search>
+          <query>sourcetype=honeynet_5_apache* NOT status=200 status=* clientip=$client_token$ /wp- | rename uri as URI, status as Status, method as Method, clientip as Client, useragent as "User Agent" | table URI, Status, Method, Client, "User Agent"</query>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Wordpress Connection details by $client_token$</title>
+      <table>
+        <title>All unique requests made by client IP</title>
+        <search>
+          <query>sourcetype=honeynet_5_apache* | transaction clientip | where field_match_sum&gt;1 | search wp- | search clientip=$client_token$ | table clientip,uri,uri_query,field_match_sum | sort -field_match_sum | rename field_match_sum as Connections, uri as "Requests Made", clientip as "IP Address", uri_query as Query</query>
+          <earliest>0</earliest>
+        </search>
+        <option name="wrap">undefined</option>
+        <option name="rowNumbers">undefined</option>
+        <option name="drilldown">row</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
 </form>
